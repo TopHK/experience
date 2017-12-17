@@ -212,6 +212,8 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth</li>
 
+<li>识别captcha</li>
+
 <li>Database</li>
 
 <li>fabric+virtualenv+pip</li>
@@ -236,6 +238,12 @@ Error message and password prompt
 
 <li>Python</li>
 
+<li>request header</li>
+
+<li>Requests</li>
+
+<li>requests usage</li>
+
 <li>Selenium</li>
 
 <li>selenum and firefox version compatibility</li>
@@ -247,8 +255,6 @@ Error message and password prompt
 <li>subprocess.Popen</li>
 
 <li>TableOfContents</li>
-
-<li>识别captcha</li>
 
 </ul>
 </p>
@@ -8573,7 +8579,7 @@ Error message and password prompt
 <div created="20170623084418490" creator="k" modified="20170623084506034" modifier="Shaojie Kan" title="$:/status/UserName">
 <pre>Shaojie Kang</pre>
 </div>
-<div list="TableOfContents Selenium firefox Python fabric+virtualenv+pip" title="$:/StoryList">
+<div list="Python TableOfContents Requests [[request header]] [[requests usage]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -8589,7 +8595,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/kangshaojie.INTRA/Downloads/scraper%252520(2)%20(2).html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/CourageK/experience/scraper.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -8609,7 +8615,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/kangshaojie.INTRA/Downloads/scraper%252520(2)%20(2).html&quot;
+            &quot;text&quot;: &quot;/C:/Users/CourageK/experience/scraper.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -8745,6 +8751,9 @@ Error message and password prompt
 </div>
 <div created="20170623094743829" creator="Shaojie Kang" modified="20170627032043604" modifier="Shaojie Kang" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>986px</pre>
+</div>
+<div created="20171117063348512" creator="Shaojie Kang" modified="20171117063409822" modifier="Shaojie Kang" tags="Selenium" title="识别captcha">
+<pre>http://www.pythonexample.com/code/solve-recaptcha-v2/</pre>
 </div>
 <div created="20171110032552716" creator="Shaojie Kang" modified="20171110032604630" modifier="Shaojie Kang" tags="TableOfContents" title="Database">
 <pre></pre>
@@ -9031,6 +9040,58 @@ pay attention to $WshShell -&gt;''exec'' and not $WshShell-&gt;''run'' as some g
 <div created="20171213050245080" creator="Shaojie Kang" modified="20171213050249830" modifier="Shaojie Kang" tags="TableOfContents" title="Python">
 <pre></pre>
 </div>
+<div created="20171216074507499" creator="Shaojie Kang" modified="20171216074637175" modifier="Shaojie Kang" tags="Requests" title="request header">
+<pre># 请求场次数据的request header，得到的响应是html
+
+```
+headers = {
+    &quot;Host&quot;: &quot;piaofang.maoyan.com&quot;,
+    &quot;Connection&quot;: &quot;keep-alive&quot;,
+    &quot;Cache-Control&quot;: &quot;max-age=0&quot;,
+    &quot;Upgrade-Insecure-Requests&quot;: &quot;1&quot;,
+    &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36&quot;,
+    &quot;Accept&quot;: &quot;text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&quot;,
+    &quot;Accept-Encoding&quot;: &quot;gzip, deflate, sdch&quot;,
+    &quot;Accept-Language&quot;: &quot;zh-CN,zh;q=0.8&quot;,
+    &quot;Cookie&quot;: &quot;__mta=243522874.1513259364849.1513267596441.1513267599695.24; _lxsdk=1605aeb3ea6c8-061dbd23039ec5-6a11157a-100200-1605aeb3ea7c8; _lxsdk_s=d27feafd6c821ec299e88746c086%7C%7C10&quot;
+}
+```
+
+# 请求座位数据的request header，得到的响应是json，其中Referer是上次请求场次的url
+
+```
+headers2 = {
+    &quot;Accept&quot;: &quot;*/*&quot;,
+    &quot;Accept-Encoding&quot;: &quot;gzip, deflate, sdch&quot;,
+    &quot;Accept-Language&quot;: &quot;zh-CN,zh;q=0.8&quot;,
+    &quot;Connection&quot;: &quot;keep-alive&quot;,
+    &quot;Cookie&quot;: &quot;__mta=243522874.1513259364849.1513267596441.1513267599695.24; _lxsdk=1605aeb3ea6c8-061dbd23039ec5-6a11157a-100200-1605aeb3ea7c8; _lxsdk_s=d27feafd6c821ec299e88746c086%7C%7C10&quot;,
+    &quot;Host&quot;: &quot;piaofang.maoyan.com&quot;,
+    &quot;Referer&quot;: &quot;http://piaofang.maoyan.com/show?showDate=2017-12-03&amp;periodType=1&amp;cityType=0&amp;cityName=%E5%8D%97%E4%BA%AC&amp;showType=1&quot;,
+    &quot;Uid&quot;: &quot;a2bc8a66d217f6cc1c17827aa0c7cd8356021630&quot;,
+    &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36&quot;,
+    &quot;X-Requested-With&quot;: &quot;XMLHttpRequest&quot;
+}
+```
+
+
+
+headers中的Host和Referer含有中文时，需要对url进行转码：
+
+```
+from urllib.parse import quote
+headers2[&quot;Referer&quot;] = quote(paipian_url1)
+```
+</pre>
+</div>
+<div created="20171216054905802" creator="Shaojie Kang" modified="20171216054911474" modifier="Shaojie Kang" tags="TableOfContents" title="Requests">
+<pre></pre>
+</div>
+<div created="20171216054914592" creator="Shaojie Kang" modified="20171216055741421" modifier="Shaojie Kang" tags="Requests" title="requests usage">
+<pre>http://www.jb51.net/article/108168.htm
+
+http://www.zhidaow.com/post/python-requests-install-and-brief-introduction</pre>
+</div>
 <div created="20171110035700739" creator="Shaojie Kang" modified="20171110035709906" modifier="Shaojie Kang" tags="TableOfContents" title="Selenium">
 <pre></pre>
 </div>
@@ -9115,9 +9176,6 @@ while True:
 &lt;&lt;toc-selective-expandable 'TableOfContents'&gt;&gt;
 
 &lt;/div&gt;</pre>
-</div>
-<div created="20171117063348512" creator="Shaojie Kang" modified="20171117063409822" modifier="Shaojie Kang" tags="Selenium" title="识别captcha">
-<pre>http://www.pythonexample.com/code/solve-recaptcha-v2/</pre>
 </div>
 
 </div>
